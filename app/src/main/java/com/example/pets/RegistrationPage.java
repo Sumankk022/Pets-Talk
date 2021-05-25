@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationPage extends AppCompatActivity {
 
-    EditText petname,ownername,phno,breed,email,password,conpassword;
+    EditText petname,ownername,username,breed,email,password,conpassword;
     Button btn;
     TextView registerbtn;
 
@@ -30,7 +30,7 @@ public class RegistrationPage extends AppCompatActivity {
         registerbtn = findViewById(R.id.backtoregister);
         petname = findViewById(R.id.petname);
         ownername = findViewById(R.id.ownername);
-        phno = findViewById(R.id.phno);
+        username = findViewById(R.id.username);
         breed = findViewById(R.id.breed);
         email=findViewById(R.id.ownermail);
         password = findViewById(R.id.password);
@@ -38,6 +38,8 @@ public class RegistrationPage extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("users");
+
+
 
     }
 
@@ -75,18 +77,15 @@ public class RegistrationPage extends AppCompatActivity {
 
     }
 
-    private Boolean Validatephno(){
-        String val = phno.getText().toString();
+    private Boolean Validateusername(){
+        String val = username.getText().toString();
         if(val.isEmpty()){
-            phno.setError("Should not be empty");
+            username.setError("Should not be empty");
             return false;
         }
-        else if(val.length()!=10){
-            phno.setError("Not Valid Number");
-            return false;
-        }
+
         else{
-            phno.setError(null);
+            username.setError(null);
             return true;
         }
 
@@ -180,20 +179,25 @@ public class RegistrationPage extends AppCompatActivity {
 
     public void registerUser(View view){
 
-        if (!ValidatepetName() | !Validatebreed() | !Validateemail() | !ValidateOwnerName() | !Validatephno() | !Validatepassword() | !Validateconfirmpassword()){
+        if (!ValidatepetName() | !Validatebreed() | !Validateemail() | !ValidateOwnerName() | !Validateusername() | !Validatepassword() | !Validateconfirmpassword()){
             return;
         }
 
 
         String fpetname = petname.getText().toString();
         String fownername = ownername.getText().toString();
-        String fphno = phno.getText().toString();
+        String fusername = username.getText().toString();
         String fbreed = breed.getText().toString();
         String femail = email.getText().toString();
         String fpassword = password.getText().toString();
         String fconpassword = conpassword.getText().toString();
-        UserHelperClass helperClass = new UserHelperClass(fpetname,fownername,fphno,fbreed,femail,fpassword,fconpassword);
-        reference.child(fphno).setValue(helperClass);
+        UserHelperClass helperClass = new UserHelperClass(fpetname,fownername,fusername,fbreed,femail,fpassword,fconpassword);
+        reference.child(fusername).setValue(helperClass);
 
+    }
+
+    public void backtologin(View view){
+        Intent intent = new Intent(RegistrationPage.this,MainActivity.class);
+        startActivity(intent);
     }
 }

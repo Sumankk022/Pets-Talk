@@ -1,16 +1,18 @@
 package com.example.pets;
 
 public class UserHelperClass {
-    String petname,ownername,phno,breed,email,password,conpassword;
+    String petname,ownername,username,breed,email,password,conpassword;
 
     public UserHelperClass() {
 
+
+
     }
 
-    public UserHelperClass(String petname, String ownername, String phno, String breed, String email, String password, String conpassword) {
+    public UserHelperClass(String petname, String ownername, String username, String breed, String email, String password, String conpassword) {
         this.petname = petname;
         this.ownername = ownername;
-        this.phno = phno;
+        this.username = username;
         this.breed = breed;
         this.email = email;
         this.password = password;
@@ -33,12 +35,12 @@ public class UserHelperClass {
         this.ownername = ownername;
     }
 
-    public String getphno() {
-        return phno;
+    public String getusername() {
+        return username;
     }
 
-    public void setphno(String phno) {
-        this.phno = phno;
+    public void setusername(String username) {
+        this.username = username;
     }
 
     public String getBreed() {
