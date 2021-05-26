@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn,submit;
     TextView registerbtn;
-    TextInputLayout username,password;
+    EditText username,password;
 
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     private Boolean validateusername(){
-        String val = username.getEditText().getText().toString();
+        String val = username.getText().toString();
 
         if(val.isEmpty()){
             username.setError("Should not be empty");
@@ -62,19 +63,17 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             username.setError(null);
-            username.setErrorEnabled(false);
             return true;
         }
     }
     private Boolean validatepassword(){
-        String val = password.getEditText().getText().toString();
+        String val = password.getText().toString();
         if(val.isEmpty()){
             password.setError("Should not be empty");
             return false;
         }
         else{
             password.setError(null);
-            password.setErrorEnabled(false);
             return true;
         }
     }
@@ -91,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void isUser() {
 
-        String userEnteredusername = username.getEditText().getText().toString();
-        String userEnteredPassword = password.getEditText().getText().toString();
+        String userEnteredusername = username.getText().toString();
+        String userEnteredPassword = password.getText().toString();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
@@ -104,13 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if(datasnapshot.exists()){
                     username.setError(null);
-                    username.setErrorEnabled(false);
 
                     String passwordFromDB = datasnapshot.child(userEnteredusername).child("password").getValue(String.class);
                     if(passwordFromDB.equals(userEnteredPassword)){
 
                         username.setError(null);
-                        username.setErrorEnabled(false);
 
                         String breedFromDB = datasnapshot.child(userEnteredusername).child("breed").getValue(String.class);
                         String ownernameFromDB = datasnapshot.child(userEnteredusername).child("ownername").getValue(String.class);
@@ -146,5 +143,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    public void backtoregister(View view){
+        Intent intent = new Intent(MainActivity.this,RegistrationPage.class);
+        startActivity(intent);
     }
     }
