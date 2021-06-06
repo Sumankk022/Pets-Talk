@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationPage extends AppCompatActivity {
 
-    EditText petname,ownername,username,breed,email,password,conpassword;
+    TextInputLayout petname,ownername,username,breed,email,password,conpassword;
     Button btn;
     TextView registerbtn;
 
@@ -44,7 +45,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean ValidatepetName(){
-        String val = petname.getText().toString();
+        String val = petname.getEditText().getText().toString();
         if(val.isEmpty()){
             petname.setError("Should not be empty");
             return false;
@@ -61,7 +62,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean ValidateOwnerName(){
-        String val = ownername.getText().toString();
+        String val = ownername.getEditText().getText().toString();
         if(val.isEmpty()){
             ownername.setError("Should not be empty");
             return false;
@@ -78,7 +79,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean Validateusername(){
-        String val = username.getText().toString();
+        String val = username.getEditText().getText().toString();
         if(val.isEmpty()){
             username.setError("Should not be empty");
             return false;
@@ -92,7 +93,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean Validatebreed(){
-        String val = breed.getText().toString();
+        String val = breed.getEditText().getText().toString();
         if(val.isEmpty()){
             breed.setError(null);
             return true;
@@ -111,7 +112,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean Validateemail(){
-        String val = email.getText().toString();
+        String val = email.getEditText().getText().toString();
         String emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 ;        if(val.isEmpty()){
             email.setError("Should not be empty");
@@ -133,7 +134,7 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean Validatepassword(){
-        String val = password.getText().toString();
+        String val = password.getEditText().getText().toString();
         String passwordVal = "^" +
                 //"(?=.*[0-9])" +         //at least 1 digit
                 //"(?=.*[a-z])" +         //at least 1 lower case letter
@@ -159,8 +160,8 @@ public class RegistrationPage extends AppCompatActivity {
     }
 
     private Boolean Validateconfirmpassword(){
-        String val = conpassword.getText().toString();
-        String pat = password.getText().toString();
+        String val = conpassword.getEditText().getText().toString();
+        String pat = password.getEditText().getText().toString();
         if(val.isEmpty()){
             conpassword.setError("Should not be empty");
             return false;
@@ -184,13 +185,13 @@ public class RegistrationPage extends AppCompatActivity {
         }
 
 
-        String fpetname = petname.getText().toString();
-        String fownername = ownername.getText().toString();
-        String fusername = username.getText().toString();
-        String fbreed = breed.getText().toString();
-        String femail = email.getText().toString();
-        String fpassword = password.getText().toString();
-        String fconpassword = conpassword.getText().toString();
+        String fpetname = petname.getEditText().getText().toString();
+        String fownername = ownername.getEditText().getText().toString();
+        String fusername = username.getEditText().getText().toString();
+        String fbreed = breed.getEditText().getText().toString();
+        String femail = email.getEditText().getText().toString();
+        String fpassword = password.getEditText().getText().toString();
+        String fconpassword = conpassword.getEditText().getText().toString();
         UserHelperClass helperClass = new UserHelperClass(fpetname,fownername,fusername,fbreed,femail,fpassword,fconpassword);
         reference.child(fusername).setValue(helperClass);
 

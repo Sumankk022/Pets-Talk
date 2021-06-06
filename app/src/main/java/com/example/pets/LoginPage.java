@@ -16,6 +16,7 @@ public class LoginPage extends AppCompatActivity {
     Button btn,submit;
     TextView registerbtn;
     EditText username,password;
+    String user,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,13 @@ public class LoginPage extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         submit = findViewById(R.id.submitbtn);
+
+        Intent intent = getIntent();
+        String usernameFromDB = intent.getStringExtra("username");
+        String passwordFromDB = intent.getStringExtra("password");
+
+        username.setText(usernameFromDB);
+        password.setText(passwordFromDB);
 
     }
 

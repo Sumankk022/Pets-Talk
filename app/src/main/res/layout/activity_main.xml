@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="170dp"
             android:src="@drawable/logo"
+            android:transitionName="logo_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +30,7 @@
             android:fontFamily="@font/bungee"
             android:text="Welcome Back"
             android:textAlignment="center"
+            android:transitionName="logo_text"
             android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
@@ -37,6 +39,7 @@
             android:layout_height="wrap_content"
             android:text="Login to Continue"
             android:textAlignment="center"
+            android:transitionName="logo_text"
             android:textSize="15dp"
             android:fontFamily="@font/bungee"/>
 
@@ -44,18 +47,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp">
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="5dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:transitionName="logo_text"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:id="@+id/username"/>
+                    android:hint="Username"/>
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -65,6 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:transitionName="logo_text"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -73,13 +79,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/password"
+                app:passwordToggleEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:id="@+id/password"/>
+                    android:inputType="textPassword"
+                    android:hint="Password"/>
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +121,7 @@
             android:layout_marginBottom="25dp"
             android:background="@color/black"
             android:fontFamily="monospace"
+            android:transitionName="logo_text"
             android:onClick="loginUser"
             android:text="SUBMIT"
             android:textAlignment="center"
@@ -124,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:transitionName="logo_text"
             android:layout_marginRight="25dp"
             android:text="Forgot Password"
             android:textColor="@color/black"
@@ -131,15 +141,16 @@
 
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="188dp"
+            android:transitionName="logo_text">
 
             <TextView
                 android:id="@+id/registerbtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|bottom"
+                android:layout_marginBottom="20dp"
                 android:text="New User? Register"
                 android:textColor="@color/black" />
 

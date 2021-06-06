@@ -3,6 +3,7 @@ package com.example.pets;
 //import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn,submit;
     TextView registerbtn;
-    EditText username,password;
+
+    TextInputLayout username,password;
 
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -37,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.submitbtn);
         registerbtn = findViewById(R.id.registerbtn);
-        username = findViewById(R.id.username);
+        //username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         submit = findViewById(R.id.submitbtn);
+        username = findViewById(R.id.username);
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("users");
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     private Boolean validateusername(){
-        String val = username.getText().toString();
+        String val = username.getEditText().getText().toString();
 
         if(val.isEmpty()){
             username.setError("Should not be empty");
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private Boolean validatepassword(){
-        String val = password.getText().toString();
+        String val = password.getEditText().getText().toString();
         if(val.isEmpty()){
             password.setError("Should not be empty");
             return false;
@@ -90,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void isUser() {
 
-        String userEnteredusername = username.getText().toString();
-        String userEnteredPassword = password.getText().toString();
+        String userEnteredusername = username.getEditText().getText().toString();
+        String userEnteredPassword = password.getEditText().getText().toString();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
@@ -113,13 +116,15 @@ public class MainActivity extends AppCompatActivity {
                         String ownernameFromDB = datasnapshot.child(userEnteredusername).child("ownername").getValue(String.class);
                         String petnameFromDB = datasnapshot.child(userEnteredusername).child("petname").getValue(String.class);
                         String usernameFromDB = datasnapshot.child(userEnteredusername).child("username").getValue(String.class);
+                        String emailFromDB = datasnapshot.child(userEnteredusername).child("email").getValue(String.class);
 
-                        Intent intent = new Intent(getApplicationContext(),UserProfile.class);
+                        Intent intent = new Intent(getApplicationContext(),Navigation.class);
                         intent.putExtra("petname",petnameFromDB);
                         intent.putExtra("ownername",ownernameFromDB);
                         intent.putExtra("breed",breedFromDB);
                         intent.putExtra("username",usernameFromDB);
                         intent.putExtra("password",passwordFromDB);
+                        intent.putExtra("email",emailFromDB);
 
                         startActivity(intent);
 
@@ -148,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void backtoregister(View view){
+
         Intent intent = new Intent(MainActivity.this,RegistrationPage.class);
+
         startActivity(intent);
     }
     }

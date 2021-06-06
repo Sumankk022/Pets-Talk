@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationPage">
+    tools:context=".RegistrationPage"
+    android:background="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome"
+            android:transitionName="logo_text"
             android:fontFamily="@font/bungee"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -31,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Register to continue"
             android:textAlignment="center"
+            android:transitionName="logo_text"
             android:textSize="18dp"
             android:textColor="@color/black"/>
 
@@ -42,11 +45,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/petname"
+                android:transitionName="logo_text"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/petname"
                     android:layout_height="wrap_content"
                     android:hint="Pet Name"/>
 
@@ -62,12 +66,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:transitionName="logo_text"
                 android:layout_height="wrap_content"
+                android:id="@+id/ownername"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/ownername"
                     android:layout_height="wrap_content"
                     android:hint="Owner Name"/>
 
@@ -84,10 +89,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/username"
+                app:counterEnabled="true"
+                android:transitionName="logo_text"
+                app:counterMaxLength="15"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username" />
@@ -105,12 +113,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/breed"
+                android:transitionName="logo_text"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breed"
                     android:hint="Breed(Optional)"/>
 
 
@@ -126,12 +135,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/ownermail"
+                android:transitionName="logo_text"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ownermail"
                     android:hint="Owner Email"/>
 
 
@@ -147,12 +157,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:transitionName="logo_text"
+                app:passwordToggleEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/password"
+                    android:inputType="textPassword"
                     android:hint="Password" />
 
 
@@ -168,12 +181,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/conpassword"
+                android:transitionName="logo_text"
+                app:passwordToggleEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/conpassword"
+                    android:inputType="textPassword"
                     android:hint="Confirm Password"/>
 
 
@@ -201,6 +217,7 @@
             android:onClick="backtologin"
             android:text="Already Registered? Login."
             android:textAlignment="center"
+            android:transitionName="login_signup_transition"
             android:textColor="@color/black" />
 
         <TextView
